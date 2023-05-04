@@ -8,8 +8,11 @@ import com.ipartek.formacion.mf0226.modelos.Producto;
 
 public class TreemapProductoDao implements ProductoDao {
 	private TreeMap<Long, Producto> productos = new TreeMap<>();
-	
-	public TreemapProductoDao() {
+		
+	// SINGLETON
+	public static TreemapProductoDao getInstancia() { return instancia; }
+	private static final TreemapProductoDao instancia = new TreemapProductoDao();
+	private TreemapProductoDao() {
 		for(int i = 1; i <= 10; i++) {
 			productos.put((long)i, Producto.builder()
 					.id((long)i)
@@ -21,6 +24,7 @@ public class TreemapProductoDao implements ProductoDao {
 			);
 		}
 	}
+	// FIN SINGLETON
 	
 	@Override
 	public Iterable<Producto> obtenerTodos() {
