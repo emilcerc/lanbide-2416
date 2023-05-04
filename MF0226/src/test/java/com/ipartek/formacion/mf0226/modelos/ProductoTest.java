@@ -16,4 +16,18 @@ public class ProductoTest {
 		
 		assertEquals(p1, p2);
 	}
+	
+	@Test
+	public void builder() {
+		Producto p = new Producto(1L, "P1", new BigDecimal("1234"), LocalDate.of(2000, 2, 3));
+		
+		Producto b = Producto.builder()
+				.id(1L)
+				.nombre("P1")
+				.precio(new BigDecimal("1234"))
+				.garantia(LocalDate.of(2000,  2, 3))
+			.build();
+		
+		assertEquals(p, b);
+	}
 }
