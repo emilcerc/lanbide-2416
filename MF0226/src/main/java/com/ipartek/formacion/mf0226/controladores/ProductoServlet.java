@@ -52,7 +52,11 @@ public class ProductoServlet extends HttpServlet {
 		}
 		
 		BigDecimal precio = new BigDecimal(parPrecio);
-		LocalDate garantia = LocalDate.parse(parGarantia);
+		LocalDate garantia = null;
+		
+		if(parGarantia != null && !parGarantia.isBlank()) {
+			garantia = LocalDate.parse(parGarantia);
+		}
 
 		Producto producto = Producto.builder().id(id).nombre(nombre).precio(precio).garantia(garantia).build();
 

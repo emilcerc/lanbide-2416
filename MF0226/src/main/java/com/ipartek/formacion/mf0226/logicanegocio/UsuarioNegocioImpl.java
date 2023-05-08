@@ -3,15 +3,15 @@ package com.ipartek.formacion.mf0226.logicanegocio;
 import java.math.BigDecimal;
 import java.util.logging.Logger;
 
+import com.ipartek.formacion.mf0226.accesodatos.MysqlProductoDao;
 import com.ipartek.formacion.mf0226.accesodatos.ProductoDao;
-import com.ipartek.formacion.mf0226.accesodatos.TreemapProductoDao;
 import com.ipartek.formacion.mf0226.modelos.Producto;
 
 public class UsuarioNegocioImpl implements UsuarioNegocio {
 
 	private static final Logger log = Logger.getLogger(UsuarioNegocioImpl.class.getName());
 	
-	private ProductoDao dao = TreemapProductoDao.getInstancia();
+	private ProductoDao dao = new MysqlProductoDao();
 	
 	@Override
 	public Iterable<Producto> listado() {
