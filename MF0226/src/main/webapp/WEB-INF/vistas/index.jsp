@@ -18,6 +18,7 @@
 				<th>Nombre</th>
 				<th>Precio</th>
 				<th>Garantía</th>
+				<th>OPCIONES</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -32,9 +33,24 @@
 						<fmt:parseDate value="${producto.garantia}" pattern="yyyy-MM-dd" var="fecha" type="date"/>
 						<fmt:formatDate value="${fecha}"/>
 					</td>
+					<td>
+						<a href="producto?id=${producto.id}">Editar</a>
+						<a href="borrar?id=${producto.id}">Borrar</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
+		<tfoot>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>
+					<a href="producto">Añadir</a>
+				</td>
+			</tr>
+		</tfoot>
 	</table>
 </body>
 </html>
