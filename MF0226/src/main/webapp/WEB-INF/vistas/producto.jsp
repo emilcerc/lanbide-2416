@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +26,12 @@
 			<input type="date" id="garantia" name="garantia" value="${producto.garantia}">
 		</div>
 		<div>
-			<button>Guardar</button>
+			<c:if test="${producto.id == null}">
+				<button>Añadir</button>
+			</c:if>
+			<c:if test="${producto.id != null}">
+				<button>Modificar</button>
+			</c:if>
 		</div>
 	</form>
 </body>
