@@ -2,8 +2,9 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="/WEB-INF/vistas/includes/cabecera.jsp"%>
-<table>
-	<thead>
+
+<table class="table table-hover table-striped table-bordered">
+	<thead class="table-dark">
 		<tr>
 			<th>Id</th>
 			<th>Nombre</th>
@@ -22,18 +23,18 @@
 				<td><fmt:parseDate value="${producto.garantia}"
 						pattern="yyyy-MM-dd" var="fecha" type="date" /> <fmt:formatDate
 						value="${fecha}" /></td>
-				<td><a href="producto?id=${producto.id}">Editar</a> <a
-					href="borrar?id=${producto.id}">Borrar</a></td>
+				<td><a class="btn btn-sm btn-primary" href="producto?id=${producto.id}">Editar</a> <a
+					class="btn btn-sm btn-danger" href="borrar?id=${producto.id}">Borrar</a></td>
 			</tr>
 		</c:forEach>
 	</tbody>
-	<tfoot>
+	<tfoot class="table-dark">
 		<tr>
 			<td></td>
 			<td></td>
 			<td></td>
 			<td></td>
-			<td><a href="producto">Añadir</a></td>
+			<td><a class="btn btn-sm btn-primary" href="producto">Añadir</a></td>
 		</tr>
 	</tfoot>
 </table>
