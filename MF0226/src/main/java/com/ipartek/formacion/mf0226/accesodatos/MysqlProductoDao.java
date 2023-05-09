@@ -2,23 +2,16 @@ package com.ipartek.formacion.mf0226.accesodatos;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 
 import com.ipartek.formacion.mf0226.modelos.Producto;
 
-public class MysqlProductoDao implements ProductoDao {
-
-	private static final String URL = "jdbc:mysql://localhost:3306/mf0226";
-	private static final String USER = "mf0226_user";
-	private static final String PASS = "user";
-	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+public class MysqlProductoDao extends BaseDao implements ProductoDao {
 
 	private static final String SQL_SELECT = "SELECT * FROM productos";
 	private static final String SQL_SELECT_ID = SQL_SELECT + " WHERE id=?";
@@ -27,23 +20,6 @@ public class MysqlProductoDao implements ProductoDao {
 	private static final String SQL_DELETE = "DELETE FROM productos WHERE id=?";
 	private static final String SQL_PRECIO = SQL_SELECT + " WHERE precio BETWEEN ? AND ?";
 	private static final String SQL_NOMBRE = SQL_SELECT + " WHERE nombre LIKE ?";
-
-	static {
-		try {
-			Class.forName(DRIVER);
-		} catch (ClassNotFoundException e) {
-			throw new AccesoDatosException("No se ha podido cargar el driver", e);
-		}
-	}
-
-	private Connection getConexion() {
-		try {
-			Connection con = DriverManager.getConnection(URL, USER, PASS);
-			return con;
-		} catch (SQLException e) {
-			throw new AccesoDatosException("No se ha podido conectar a la base de datos", e);
-		}
-	}
 
 	@Override
 	public Iterable<Producto> obtenerTodos() {
@@ -211,15 +187,4 @@ public class MysqlProductoDao implements ProductoDao {
 		}
 
 	}
-
-	private LocalDate dateToLocalDate(java.sql.Date date) throws SQLException {
-		LocalDate localDate = null;
-		
-		if(date != null) {
-			localDate = date.toLocalDate();
-		}
-		
-		return localDate;
-	}
-
 }
