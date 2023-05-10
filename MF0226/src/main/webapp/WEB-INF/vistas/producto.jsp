@@ -14,22 +14,29 @@
 	<div class="row mb-3">
 		<label class="col-sm-2 col-lg-1 col-form-label" for="nombre">Nombre</label>
 		<div class="col-sm">
-			<input class="form-control" type="text" id="nombre" name="nombre"
+			<input class="form-control ${errores.nombre != null ? 'is-invalid' : ''}" type="text" id="nombre" name="nombre"
 				value="${producto.nombre}">
+			<div class="invalid-feedback">
+				${errores.nombre}
+			</div>
 		</div>
 	</div>
 	<div class="row mb-3">
 		<label class="col-sm-2 col-lg-1 col-form-label" for="precio">Precio</label>
 		<div class="col-sm">
-			<input class="form-control" type="number" step=".01" id="precio" name="precio"
+			<input class="form-control ${errores.precio != null ? 'is-invalid' : ''}" type="number" step=".01" id="precio" name="precio"
 				value="${producto.precio}">
+			<div class="invalid-feedback">
+				${errores.precio}
+			</div>
 		</div>
 	</div>
 	<div class="row mb-3">
 		<label class="col-sm-2 col-lg-1 col-form-label" for="garantia">Garantía</label>
 		<div class="col-sm">
-			<input class="form-control" type="date" id="garantia" name="garantia"
+			<input class="form-control ${errores.garantia != null ? 'is-invalid' : ''}" type="date" id="garantia" name="garantia"
 				value="${producto.garantia}">
+			<div class="invalid-feedback">${errores.garantia}</div>
 		</div>
 	</div>
 	<div class="row mb-3">
