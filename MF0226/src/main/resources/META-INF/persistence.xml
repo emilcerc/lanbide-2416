@@ -1,26 +1,17 @@
-<!--
-  ~ Hibernate, Relational Persistence for Idiomatic Java
-  ~
-  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
-  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
-  -->
 <persistence xmlns="http://java.sun.com/xml/ns/persistence"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
 
-    <persistence-unit name="org.hibernate.tutorial.jpa">
-        <description>
-            Persistence unit for the Jakarta Persistence tutorial of the Hibernate Getting Started Guide
-        </description>
+    <persistence-unit name="com.ipartek.formacion.mf0226.modelos">
 
-        <class>org.hibernate.tutorial.em.Event</class>
+        <class>com.ipartek.formacion.mf0226.modelos.Producto</class>
 
         <properties>
-            <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver" />
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1" />
-            <property name="jakarta.persistence.jdbc.user" value="sa" />
-            <property name="jakarta.persistence.jdbc.password" value="" />
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mf0226jpa" />
+            <property name="jakarta.persistence.jdbc.user" value="mf0226jpa_admin" />
+            <property name="jakarta.persistence.jdbc.password" value="admin" />
 
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.hbm2ddl.auto" value="create" />
