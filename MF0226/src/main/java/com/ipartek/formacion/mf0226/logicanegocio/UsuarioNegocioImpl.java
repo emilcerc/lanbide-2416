@@ -3,7 +3,7 @@ package com.ipartek.formacion.mf0226.logicanegocio;
 import java.math.BigDecimal;
 import java.util.logging.Logger;
 
-import com.ipartek.formacion.mf0226.accesodatos.MysqlProductoDao;
+import com.ipartek.formacion.mf0226.accesodatos.JpaProductoDao;
 import com.ipartek.formacion.mf0226.accesodatos.ProductoDao;
 import com.ipartek.formacion.mf0226.modelos.Producto;
 
@@ -11,7 +11,7 @@ public class UsuarioNegocioImpl implements UsuarioNegocio {
 
 	private static final Logger log = Logger.getLogger(UsuarioNegocioImpl.class.getName());
 	
-	private ProductoDao dao = new MysqlProductoDao();
+	private ProductoDao dao = new JpaProductoDao();
 	
 	@Override
 	public Iterable<Producto> listado() {

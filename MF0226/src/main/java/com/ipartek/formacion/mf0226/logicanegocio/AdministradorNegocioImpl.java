@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import com.ipartek.formacion.mf0226.accesodatos.MysqlProductoDao;
+import com.ipartek.formacion.mf0226.accesodatos.JpaProductoDao;
 import com.ipartek.formacion.mf0226.accesodatos.ProductoDao;
 import com.ipartek.formacion.mf0226.modelos.Producto;
 
@@ -17,7 +17,7 @@ import lombok.extern.java.Log;
 @Log
 public class AdministradorNegocioImpl extends UsuarioNegocioImpl implements AdministradorNegocio {
 
-	private ProductoDao dao = new MysqlProductoDao();
+	private ProductoDao dao = new JpaProductoDao();
 
 	private ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 	private Validator validator = factory.getValidator();
