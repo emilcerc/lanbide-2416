@@ -34,7 +34,7 @@ public class Rol {
 	private String nombre;
 	
 	@Lob
-	private String descripción;
+	private String descripcion;
 	
 	@OneToMany(mappedBy = "rol")
 	private Set<Usuario> usuarios;
