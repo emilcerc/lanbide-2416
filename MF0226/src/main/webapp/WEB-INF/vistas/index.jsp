@@ -3,40 +3,22 @@
 
 <%@ include file="/WEB-INF/vistas/includes/cabecera.jsp"%>
 
-<table class="table table-hover table-striped table-bordered">
-	<thead class="table-dark">
-		<tr>
-			<th>Id</th>
-			<th>Nombre</th>
-			<th>Precio</th>
-			<th>Garantía</th>
-			<th>OPCIONES</th>
-		</tr>
-	</thead>
-	<tbody>
-		<c:forEach items="${productos}" var="producto">
-			<tr>
-				<td>${producto.id}</td>
-				<td>${producto.nombre}</td>
-				<td><fmt:formatNumber type="currency"
-						value="${producto.precio}" /></td>
-				<td><fmt:parseDate value="${producto.garantia}"
-						pattern="yyyy-MM-dd" var="fecha" type="date" /> <fmt:formatDate
-						value="${fecha}" /></td>
-				<td><a class="btn btn-sm btn-primary" href="producto?id=${producto.id}">Editar</a> <a
-					class="btn btn-sm btn-danger" href="borrar?id=${producto.id}">Borrar</a></td>
-			</tr>
-		</c:forEach>
-	</tbody>
-	<tfoot class="table-dark">
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td><a class="btn btn-sm btn-primary" href="producto">Añadir</a></td>
-		</tr>
-	</tfoot>
-</table>
+<div
+	class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-4">
+	<c:forEach items="${productos}" var="p"> <%-- for(Producto p: productos) --%>
+		<div class="col">
+			<div class="card h-100">
+				<img src="imgs/${p.id}.jpg" class="card-img-top" alt="">
+				<div class="card-body">
+					<h5 class="card-title">${p.nombre}</h5>
+					<p class="card-text">${p.precio}</p>
+				</div>
+				<div class="card-footer">
+					<small class="text-muted">${p.garantia}</small>
+				</div>
+			</div>
+		</div>
+	</c:forEach>
+</div>
 
 <%@ include file="/WEB-INF/vistas/includes/pie.jsp"%>

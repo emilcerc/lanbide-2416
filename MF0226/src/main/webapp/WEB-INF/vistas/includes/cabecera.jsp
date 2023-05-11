@@ -24,4 +24,4 @@
 
 	<h1 class="text-bg-dark p-3 mb-3">MF0226</h1>
 
-	<main class="container">
+	<main class="container-fluid">
