@@ -23,7 +23,7 @@ public class JpaUsuarioDao implements UsuarioDao {
 			Usuario usuario;
 			
 			try {
-				usuario = em.createQuery("from Usuario where email = '" + email + "'", Usuario.class).getSingleResult();
+				usuario = em.createQuery("from Usuario u join fetch u.rol where email = '" + email + "'", Usuario.class).getSingleResult();
 			} catch (NoResultException e) {
 				usuario = null;
 			}
