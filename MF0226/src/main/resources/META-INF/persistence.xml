@@ -5,8 +5,6 @@
 
     <persistence-unit name="com.ipartek.formacion.mf0226.entidades">
 
-        <class>com.ipartek.formacion.mf0226.entidades.Producto</class>
-
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mf0226jpa" />
