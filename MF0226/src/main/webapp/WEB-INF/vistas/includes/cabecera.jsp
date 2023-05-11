@@ -17,7 +17,8 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top mb-3">
+	<nav
+		class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top mb-3">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#">MF0226</a>
 			<button class="navbar-toggler" type="button"
@@ -28,10 +29,29 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/index">Principal</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/index">Principal</a></li>
 				</ul>
 				<ul class="navbar-nav mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/index">Administración</a></li>
+					<c:if test="${usuario.rol.nombre == 'ADMIN'}">
+						<li class="nav-item"><a class="nav-link"
+							href="${pageContext.request.contextPath}/admin/index">Administración</a></li>
+					</c:if>
+
+					<c:if test="${sessionScope.usuario != null}">
+						<li class="navbar-text">${sessionScope.usuario.nombre}
+							(${sessionScope.usuario.rol.descripcion})</li>
+					</c:if>
+					<c:choose>
+						<c:when test="${sessionScope.usuario == null}">
+							<li class="nav-item"><a class="nav-link"
+								href="${pageContext.request.contextPath}/login">Login</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="nav-item"><a class="nav-link"
+								href="${pageContext.request.contextPath}/logout">Logout</a></li>
+						</c:otherwise>
+					</c:choose>
 				</ul>
 			</div>
 		</div>
