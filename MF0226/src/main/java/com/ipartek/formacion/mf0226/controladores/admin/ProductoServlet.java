@@ -1,4 +1,4 @@
-package com.ipartek.formacion.mf0226.controladores;
+package com.ipartek.formacion.mf0226.controladores.admin;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/producto")
+@WebServlet("/admin/producto")
 public class ProductoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -36,7 +36,7 @@ public class ProductoServlet extends HttpServlet {
 			request.setAttribute("producto", producto);
 		}
 
-		request.getRequestDispatcher("/WEB-INF/vistas/producto.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/vistas/admin/producto.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -66,7 +66,7 @@ public class ProductoServlet extends HttpServlet {
 		if(errores.size() > 0) {
 			request.setAttribute("errores", errores);
 			request.setAttribute("producto", producto);
-			request.getRequestDispatcher("/WEB-INF/vistas/producto.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/vistas/admin/producto.jsp").forward(request, response);
 			
 			return;
 		}
