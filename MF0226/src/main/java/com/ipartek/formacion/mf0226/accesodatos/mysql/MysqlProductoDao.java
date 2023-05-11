@@ -1,4 +1,4 @@
-package com.ipartek.formacion.mf0226.accesodatos;
+package com.ipartek.formacion.mf0226.accesodatos.mysql;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -9,7 +9,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import com.ipartek.formacion.mf0226.modelos.Producto;
+import com.ipartek.formacion.mf0226.accesodatos.AccesoDatosException;
+import com.ipartek.formacion.mf0226.accesodatos.BaseDao;
+import com.ipartek.formacion.mf0226.accesodatos.ProductoDao;
+import com.ipartek.formacion.mf0226.entidades.Producto;
 
 public class MysqlProductoDao extends BaseDao implements ProductoDao {
 

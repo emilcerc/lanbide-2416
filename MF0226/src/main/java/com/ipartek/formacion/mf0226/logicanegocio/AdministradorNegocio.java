@@ -2,7 +2,7 @@ package com.ipartek.formacion.mf0226.logicanegocio;
 
 import java.util.Map;
 
-import com.ipartek.formacion.mf0226.modelos.Producto;
+import com.ipartek.formacion.mf0226.entidades.Producto;
 
 public interface AdministradorNegocio extends UsuarioNegocio {
 	Map<String, String> validarProducto(Producto producto);

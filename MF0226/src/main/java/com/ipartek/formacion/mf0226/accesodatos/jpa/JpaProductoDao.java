@@ -1,9 +1,10 @@
-package com.ipartek.formacion.mf0226.accesodatos;
+package com.ipartek.formacion.mf0226.accesodatos.jpa;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-import com.ipartek.formacion.mf0226.modelos.Producto;
+import com.ipartek.formacion.mf0226.accesodatos.ProductoDao;
+import com.ipartek.formacion.mf0226.entidades.Producto;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -12,7 +13,7 @@ import jakarta.persistence.Persistence;
 public class JpaProductoDao implements ProductoDao {
 
 	private EntityManagerFactory emf = Persistence
-			.createEntityManagerFactory("com.ipartek.formacion.mf0226.modelos");
+			.createEntityManagerFactory("com.ipartek.formacion.mf0226.entidades");
 
 	@Override
 	public Iterable<Producto> obtenerTodos() {

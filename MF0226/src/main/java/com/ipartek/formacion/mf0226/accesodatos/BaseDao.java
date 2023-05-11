@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-class BaseDao {
+public class BaseDao {
 	static final String BDD_URL = "jdbc:mysql://localhost:3306/mf0226";
 	static final String BDD_USER = "mf0226_user";
 	static final String BDD_PASS = "user";
@@ -19,7 +19,7 @@ class BaseDao {
 		}
 	}
 
-	static Connection getConexion() {
+	public static Connection getConexion() {
 		try {
 			Connection con = DriverManager.getConnection(BDD_URL, BDD_USER, BDD_PASS);
 			return con;
@@ -28,7 +28,7 @@ class BaseDao {
 		}
 	}
 	
-	static LocalDate dateToLocalDate(java.sql.Date date) throws SQLException {
+	public static LocalDate dateToLocalDate(java.sql.Date date) throws SQLException {
 		LocalDate localDate = null;
 		
 		if(date != null) {

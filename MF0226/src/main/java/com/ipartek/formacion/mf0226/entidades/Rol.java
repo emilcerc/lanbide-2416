@@ -1,15 +1,15 @@
-package com.ipartek.formacion.mf0226.modelos;
+package com.ipartek.formacion.mf0226.entidades;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -17,26 +17,25 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Builder
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Builder
 @Entity
-@Table(name = "productos")
-public class Producto {
+@Table(name = "roles")
+public class Rol {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Min(0)
 	private Long id;
-
+	
 	@NotNull
-	@Size(min = 3, max = 50)
+	@NotBlank
+	@Size(max = 20)
 	private String nombre;
-
-	@NotNull(message = "no debe estar vacío")
-	@Min(0)
-	private BigDecimal precio;
-
-	@Future
-	private LocalDate garantia;
+	
+	@Lob
+	private String descripcion;
+	
+	@OneToMany(mappedBy = "rol")
+	private Set<Usuario> usuarios;
 }

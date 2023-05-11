@@ -3,9 +3,9 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
 
-    <persistence-unit name="com.ipartek.formacion.mf0226.modelos">
+    <persistence-unit name="com.ipartek.formacion.mf0226.entidades">
 
-        <class>com.ipartek.formacion.mf0226.modelos.Producto</class>
+        <class>com.ipartek.formacion.mf0226.entidades.Producto</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />

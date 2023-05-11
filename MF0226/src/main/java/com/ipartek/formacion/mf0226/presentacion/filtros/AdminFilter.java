@@ -1,8 +1,8 @@
-package com.ipartek.formacion.mf0226.filtros;
+package com.ipartek.formacion.mf0226.presentacion.filtros;
 
 import java.io.IOException;
 
-import com.ipartek.formacion.mf0226.modelos.Usuario;
+import com.ipartek.formacion.mf0226.entidades.Usuario;
 
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;

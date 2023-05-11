@@ -1,9 +1,9 @@
-package com.ipartek.formacion.mf0226.controladores.admin;
+package com.ipartek.formacion.mf0226.presentacion.controladores.admin;
 
 import java.io.IOException;
 
-import com.ipartek.formacion.mf0226.logicanegocio.UsuarioNegocio;
-import com.ipartek.formacion.mf0226.logicanegocio.UsuarioNegocioImpl;
+import com.ipartek.formacion.mf0226.logicanegocio.AdministradorNegocio;
+import com.ipartek.formacion.mf0226.logicanegocio.AdministradorNegocioImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,16 +11,20 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/admin/index")
-public class IndexServlet extends HttpServlet {
+@WebServlet("/admin/borrar")
+public class BorrarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-	private UsuarioNegocio negocio = new UsuarioNegocioImpl();
+	private AdministradorNegocio negocio = new AdministradorNegocioImpl();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("productos", negocio.listado());
+		String parId = request.getParameter("id");
 		
-		request.getRequestDispatcher("/WEB-INF/vistas/admin/index.jsp").forward(request, response);
+		Long id = Long.parseLong(parId);
+		
+		negocio.borrarProducto(id);
+		
+		response.sendRedirect("index");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

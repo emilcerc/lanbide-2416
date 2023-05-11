@@ -1,6 +1,8 @@
-package com.ipartek.formacion.mf0226.accesodatos;
+package com.ipartek.formacion.mf0226.accesodatos.jpa;
 
-import com.ipartek.formacion.mf0226.modelos.Usuario;
+import com.ipartek.formacion.mf0226.accesodatos.AccesoDatosException;
+import com.ipartek.formacion.mf0226.accesodatos.UsuarioDao;
+import com.ipartek.formacion.mf0226.entidades.Usuario;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -10,7 +12,7 @@ import jakarta.persistence.Persistence;
 public class JpaUsuarioDao implements UsuarioDao {
 
 	private EntityManagerFactory emf = Persistence
-			.createEntityManagerFactory("com.ipartek.formacion.mf0226.modelos");
+			.createEntityManagerFactory("com.ipartek.formacion.mf0226.entidades");
 
 	@Override
 	public Usuario obtenerPorEmail(String email) {

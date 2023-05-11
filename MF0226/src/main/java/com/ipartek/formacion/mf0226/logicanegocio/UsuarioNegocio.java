@@ -2,8 +2,8 @@ package com.ipartek.formacion.mf0226.logicanegocio;
 
 import java.math.BigDecimal;
 
-import com.ipartek.formacion.mf0226.modelos.Producto;
-import com.ipartek.formacion.mf0226.modelos.Usuario;
+import com.ipartek.formacion.mf0226.entidades.Producto;
+import com.ipartek.formacion.mf0226.entidades.Usuario;
 
 public interface UsuarioNegocio {
 	Iterable<Producto> listado();

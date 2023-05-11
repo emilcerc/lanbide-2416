@@ -3,12 +3,12 @@ package com.ipartek.formacion.mf0226.logicanegocio;
 import java.math.BigDecimal;
 import java.util.logging.Logger;
 
-import com.ipartek.formacion.mf0226.accesodatos.JpaProductoDao;
-import com.ipartek.formacion.mf0226.accesodatos.JpaUsuarioDao;
 import com.ipartek.formacion.mf0226.accesodatos.ProductoDao;
 import com.ipartek.formacion.mf0226.accesodatos.UsuarioDao;
-import com.ipartek.formacion.mf0226.modelos.Producto;
-import com.ipartek.formacion.mf0226.modelos.Usuario;
+import com.ipartek.formacion.mf0226.accesodatos.jpa.JpaProductoDao;
+import com.ipartek.formacion.mf0226.accesodatos.jpa.JpaUsuarioDao;
+import com.ipartek.formacion.mf0226.entidades.Producto;
+import com.ipartek.formacion.mf0226.entidades.Usuario;
 
 public class UsuarioNegocioImpl implements UsuarioNegocio {
 

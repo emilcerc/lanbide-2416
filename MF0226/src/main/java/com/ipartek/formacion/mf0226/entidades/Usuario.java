@@ -1,14 +1,13 @@
-package com.ipartek.formacion.mf0226.modelos;
+package com.ipartek.formacion.mf0226.entidades;
 
-import java.util.Set;
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -22,20 +21,29 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "roles")
-public class Rol {
+@Table(name = "usuarios")
+public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@NotNull
+	@Size(min = 1, max = 100)
+	@Email
+	@Column(unique = true)
+	private String email;
 	
 	@NotNull
 	@NotBlank
-	@Size(max = 20)
+	@Size(max = 100)
+	private String password;
+	
+	@NotNull
+	@NotBlank
+	@Size(max = 50)
 	private String nombre;
 	
-	@Lob
-	private String descripcion;
-	
-	@OneToMany(mappedBy = "rol")
-	private Set<Usuario> usuarios;
+	@NotNull
+	@ManyToOne
+	private Rol rol;
 }

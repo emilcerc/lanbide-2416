@@ -1,15 +1,15 @@
-package com.ipartek.formacion.mf0226.controladores.admin;
+package com.ipartek.formacion.mf0226.presentacion.controladores.admin;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Map;
 
+import com.ipartek.formacion.mf0226.entidades.Producto;
 import com.ipartek.formacion.mf0226.logicanegocio.AdministradorNegocio;
 import com.ipartek.formacion.mf0226.logicanegocio.AdministradorNegocioImpl;
 import com.ipartek.formacion.mf0226.logicanegocio.UsuarioNegocio;
 import com.ipartek.formacion.mf0226.logicanegocio.UsuarioNegocioImpl;
-import com.ipartek.formacion.mf0226.modelos.Producto;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

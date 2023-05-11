@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import com.ipartek.formacion.mf0226.accesodatos.JpaProductoDao;
 import com.ipartek.formacion.mf0226.accesodatos.ProductoDao;
-import com.ipartek.formacion.mf0226.modelos.Producto;
+import com.ipartek.formacion.mf0226.accesodatos.jpa.JpaProductoDao;
+import com.ipartek.formacion.mf0226.entidades.Producto;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;

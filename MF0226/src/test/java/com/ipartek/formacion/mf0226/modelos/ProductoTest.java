@@ -7,6 +7,8 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
+import com.ipartek.formacion.mf0226.entidades.Producto;
+
 public class ProductoTest {
 
 	@Test
