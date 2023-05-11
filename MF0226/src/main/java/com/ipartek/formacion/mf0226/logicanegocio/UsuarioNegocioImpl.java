@@ -4,14 +4,18 @@ import java.math.BigDecimal;
 import java.util.logging.Logger;
 
 import com.ipartek.formacion.mf0226.accesodatos.JpaProductoDao;
+import com.ipartek.formacion.mf0226.accesodatos.JpaUsuarioDao;
 import com.ipartek.formacion.mf0226.accesodatos.ProductoDao;
+import com.ipartek.formacion.mf0226.accesodatos.UsuarioDao;
 import com.ipartek.formacion.mf0226.modelos.Producto;
+import com.ipartek.formacion.mf0226.modelos.Usuario;
 
 public class UsuarioNegocioImpl implements UsuarioNegocio {
 
 	private static final Logger log = Logger.getLogger(UsuarioNegocioImpl.class.getName());
 	
 	private ProductoDao dao = new JpaProductoDao();
+	private UsuarioDao daoUsuario = new JpaUsuarioDao();
 	
 	@Override
 	public Iterable<Producto> listado() {
@@ -35,6 +39,21 @@ public class UsuarioNegocioImpl implements UsuarioNegocio {
 	public Iterable<Producto> buscarPorNombre(String parteDelNombre) {
 		log.info("BUSCAR POR NOMBRE: " + parteDelNombre);
 		return dao.buscarPorNombre(parteDelNombre);
+	}
+
+	@Override
+	public Usuario autenticarUsuario(Usuario usuarioLogin) {
+		Usuario usuarioObtenido = daoUsuario.obtenerPorEmail(usuarioLogin.getEmail());
+		
+		if(usuarioObtenido == null) {
+			return null;
+		}
+		
+		if(usuarioObtenido.getPassword().equals(usuarioLogin.getPassword())) {
+			return usuarioObtenido;
+		} else {
+			return null;
+		}
 	}
 
 }
