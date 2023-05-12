@@ -32,14 +32,10 @@
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/index">Principal</a></li>
 				</ul>
-				<form class="d-flex" role="search" action="buscar-nombre"
+				<form class="d-flex" role="search" action="buscar"
 					method="post">
 					<input class="form-control me-2" type="search" placeholder="Nombre"
 						aria-label="Nombre" name="nombre">
-					<button class="btn btn-secondary" type="submit">Buscar</button>
-				</form>
-				<form class="ms-3 d-flex" role="search" action="buscar-precio"
-					method="post">
 					<input style="width: 5em" class="form-control me-2" type="search" placeholder="Mín"
 						aria-label="Mínimo" name="minimo"> <input style="width: 5em" class="form-control me-2"
 						type="search" placeholder="Máx" aria-label="Máximo" name="maximo">

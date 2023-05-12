@@ -13,4 +13,5 @@ public interface UsuarioNegocio {
 	Iterable<Producto> buscarPorNombre(String parteDelNombre);
 	
 	Usuario autenticarUsuario(Usuario usuario);
+	Iterable<Producto> buscar(String nombre, BigDecimal minimo, BigDecimal maximo);
 }

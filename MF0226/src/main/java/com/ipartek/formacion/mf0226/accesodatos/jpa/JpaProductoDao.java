@@ -9,6 +9,7 @@ import com.ipartek.formacion.mf0226.entidades.Producto;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
 
 public class JpaProductoDao implements ProductoDao {
 
@@ -100,6 +101,25 @@ public class JpaProductoDao implements ProductoDao {
 		em.getTransaction().begin();
 		
 		List<Producto> productos = em.createQuery("from Producto where precio between " + minimo + " and " + maximo , Producto.class).getResultList();
+		
+		em.getTransaction().commit();
+		em.close();
+
+		return productos;
+	}
+
+	@Override
+	public Iterable<Producto> buscar(String nombre, BigDecimal minimo, BigDecimal maximo) {
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		
+		TypedQuery<Producto> consulta = em.createQuery("from Producto where nombre like ? and precio between ? and ?", Producto.class);
+		
+		consulta.setParameter(1, "%" + nombre + "%");
+		consulta.setParameter(2, minimo);
+		consulta.setParameter(3, maximo);
+		
+		List<Producto> productos = consulta.getResultList();
 		
 		em.getTransaction().commit();
 		em.close();

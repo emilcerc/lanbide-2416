@@ -56,4 +56,10 @@ public class UsuarioNegocioImpl implements UsuarioNegocio {
 		}
 	}
 
+	@Override
+	public Iterable<Producto> buscar(String nombre, BigDecimal minimo, BigDecimal maximo) {
+		log.info(String.format("BUSCAR: %s, %s, %s", nombre, minimo, maximo));
+		return dao.buscar(nombre, minimo, maximo);
+	}
+
 }
