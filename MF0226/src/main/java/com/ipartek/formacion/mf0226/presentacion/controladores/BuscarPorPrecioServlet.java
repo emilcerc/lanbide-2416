@@ -1,6 +1,7 @@
 package com.ipartek.formacion.mf0226.presentacion.controladores;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 import com.ipartek.formacion.mf0226.entidades.Producto;
 import com.ipartek.formacion.mf0226.logicanegocio.UsuarioNegocio;
@@ -12,16 +13,20 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/buscar-nombre")
-public class BuscarPorNombre extends HttpServlet {
+@WebServlet("/buscar-precio")
+public class BuscarPorPrecioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	private UsuarioNegocio negocio = new UsuarioNegocioImpl();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nombre = request.getParameter("nombre");
+		String min = request.getParameter("minimo");
+		String max = request.getParameter("maximo");
 		
-		Iterable<Producto> productos = negocio.buscarPorNombre(nombre);
+		BigDecimal minimo = new BigDecimal(min);
+		BigDecimal maximo = new BigDecimal(max);
+		
+		Iterable<Producto> productos = negocio.buscarPorPrecios(minimo, maximo);
 		
 		request.setAttribute("productos", productos);
 		
