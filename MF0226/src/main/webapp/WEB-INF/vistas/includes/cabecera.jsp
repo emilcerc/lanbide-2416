@@ -28,11 +28,25 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<ul class="navbar-nav mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/index">Principal</a></li>
 				</ul>
-				<ul class="navbar-nav mb-2 mb-lg-0">
+				<form class="d-flex" role="search" action="buscar-nombre"
+					method="post">
+					<input class="form-control me-2" type="search" placeholder="Nombre"
+						aria-label="Nombre" name="nombre">
+					<button class="btn btn-secondary" type="submit">Buscar</button>
+				</form>
+				<form class="ms-3 d-flex" role="search" action="buscar-precio"
+					method="post">
+					<input style="width: 5em" class="form-control me-2" type="search" placeholder="Mín"
+						aria-label="Mínimo" name="minimo"> <input style="width: 5em" class="form-control me-2"
+						type="search" placeholder="Máx" aria-label="Máximo" name="maximo">
+					<button class="btn btn-secondary" type="submit">Buscar</button>
+				</form>
+
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 					<c:if test="${usuario.rol.nombre == 'ADMIN'}">
 						<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}/admin/index">Administración</a></li>
