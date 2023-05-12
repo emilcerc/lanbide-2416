@@ -113,7 +113,7 @@ public class JpaProductoDao implements ProductoDao {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		
-		TypedQuery<Producto> consulta = em.createQuery("from Producto where nombre like ? and precio between ? and ?", Producto.class);
+		TypedQuery<Producto> consulta = em.createQuery("from Producto where nombre like ?1 and precio between ?2 and ?3", Producto.class);
 		
 		consulta.setParameter(1, "%" + nombre + "%");
 		consulta.setParameter(2, minimo);

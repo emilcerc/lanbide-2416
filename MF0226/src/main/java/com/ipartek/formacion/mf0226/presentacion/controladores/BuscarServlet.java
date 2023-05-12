@@ -24,8 +24,17 @@ public class BuscarServlet extends HttpServlet {
 		String min = request.getParameter("minimo");
 		String max = request.getParameter("maximo");
 		
-		BigDecimal minimo = new BigDecimal(min);
-		BigDecimal maximo = new BigDecimal(max);
+		BigDecimal minimo = BigDecimal.ZERO;
+		
+		if(min != null && min.trim().length() > 0) {
+			minimo = new BigDecimal(min);
+		}
+		
+		BigDecimal maximo = new BigDecimal("100000000000000000000000000000000000000000000"); 
+		
+		if(max != null && max.trim().length() > 0) {
+			 maximo = new BigDecimal(max);
+		}
 		
 		Iterable<Producto> productos = negocio.buscar(nombre, minimo, maximo);
 		
