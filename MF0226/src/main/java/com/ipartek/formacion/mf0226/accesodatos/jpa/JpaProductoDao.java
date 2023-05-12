@@ -83,7 +83,7 @@ public class JpaProductoDao implements ProductoDao {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		
-		parteDelNombre = "%" + parteDelNombre + "%";
+		parteDelNombre = "'%" + parteDelNombre + "%'";
 		
 		// TODO: cambiar la concatenación por parámetros
 		List<Producto> productos = em.createQuery("from Producto where nombre like " + parteDelNombre, Producto.class).getResultList();
