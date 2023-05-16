@@ -42,6 +42,11 @@ public class ProductoRestServlet extends HttpServlet {
 		} else {
 			Producto producto = NEGOCIO.detalle(id);
 			
+			if(producto == null) {
+				response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+				return;
+			}
+			
 			MAPPER.writeValue(out, producto);
 		}
 	}
@@ -52,6 +57,8 @@ public class ProductoRestServlet extends HttpServlet {
 		InputStream in = request.getInputStream();
 		
 		Producto producto = MAPPER.readValue(in, Producto.class);
+		
+		response.setStatus(HttpServletResponse.SC_CREATED);
 		
 		NEGOCIO.agregarProducto(producto);
 	}
@@ -72,6 +79,8 @@ public class ProductoRestServlet extends HttpServlet {
 		Long id = getId(request);
 		
 		NEGOCIO.borrarProducto(id);
+		
+		response.setStatus(HttpServletResponse.SC_NO_CONTENT);
 	}
 
 	private static Long getId(HttpServletRequest request) {
