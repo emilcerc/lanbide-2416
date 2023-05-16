@@ -55,22 +55,28 @@ public class ProductoRestServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		InputStream in = request.getInputStream();
+		PrintWriter out = response.getWriter();
 		
 		Producto producto = MAPPER.readValue(in, Producto.class);
 		
 		response.setStatus(HttpServletResponse.SC_CREATED);
 		
-		NEGOCIO.agregarProducto(producto);
+		Producto creado = NEGOCIO.agregarProducto(producto);
+		
+		MAPPER.writeValue(out, creado);
 	}
 	
 	@Override
 	protected void doPut(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
 		InputStream in = request.getInputStream();
 		
 		Producto producto = MAPPER.readValue(in, Producto.class);
 		
-		NEGOCIO.modificarProducto(producto);
+		Producto modificado = NEGOCIO.modificarProducto(producto);
+		
+		MAPPER.writeValue(out, modificado);
 	}
 
 	@Override
