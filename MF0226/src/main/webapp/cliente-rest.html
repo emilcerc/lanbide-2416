@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cliente Rest</title>
+<script defer src="js/cliente-rest.js"></script>
+</head>
+<body>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nombre</th>
+				<th>Precio</th>
+				<th>Garantía</th>
+				<th>OPCIONES</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>${producto.id}</td>
+				<td>${producto.nombre}</td>
+				<td>${producto.precio}</td>
+				<td>${producto.garantia}</td>
+				<td><a href="#">Editar</a> <a href="#">Borrar</a></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><a href="#">Añadir</a></td>
+			</tr>
+		</tfoot>
+	</table>
+
+</body>
+</html>
