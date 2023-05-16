@@ -4,6 +4,10 @@
              version="2.0">
 
     <persistence-unit name="com.ipartek.formacion.mf0226.entidades">
+    
+    	<class>com.ipartek.formacion.mf0226.entidades.Producto</class>
+    	<class>com.ipartek.formacion.mf0226.entidades.Usuario</class>
+    	<class>com.ipartek.formacion.mf0226.entidades.Rol</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
