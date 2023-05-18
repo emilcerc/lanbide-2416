@@ -4,14 +4,17 @@ import com.ipartek.formacion.mf0226.entidades.Producto;
 import com.ipartek.formacion.mf0226.logicanegocio.AdministradorNegocio;
 import com.ipartek.formacion.mf0226.logicanegocio.AdministradorNegocioImpl;
 
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 
 @Path("productos")
@@ -28,12 +31,22 @@ public class ProductoRest {
 	@GET
 	@Path("{id}")
 	public Producto getPorId(@PathParam("id") Long id) {
-		return NEGOCIO.detalle(id);
+		Producto producto = NEGOCIO.detalle(id);
+		
+		if(producto == null) {
+			throw new NotFoundException();
+		}
+		
+		return producto;
 	}
 	
 	@POST
-	public Producto post(Producto producto) {
-		return NEGOCIO.agregarProducto(producto);
+	public Producto post(Producto producto, @Context final HttpServletResponse response) {
+		Producto productoRecibido = NEGOCIO.agregarProducto(producto);
+		
+		response.setStatus(HttpServletResponse.SC_CREATED);
+		
+		return productoRecibido;
 	}
 	
 	@PUT
@@ -44,7 +57,8 @@ public class ProductoRest {
 	
 	@DELETE
 	@Path("{id}")
-	public void borrar(@PathParam("id") Long id) {
+	public void borrar(@PathParam("id") Long id, @Context final HttpServletResponse response) {
+		response.setStatus(HttpServletResponse.SC_NO_CONTENT);
 		NEGOCIO.borrarProducto(id);
 	}
 }
