@@ -163,7 +163,7 @@ public class JpaCancionDao implements CancionDao {
 		EntityManager em = Globales.EMF.createEntityManager();
 		em.getTransaction().begin();
 		
-		TypedQuery<Cancion> consulta = em.createQuery("from Cancion where usuario.id = ?1", Cancion.class);
+		TypedQuery<Cancion> consulta = em.createQuery("from Cancion join fetch estilo where usuario.id = ?1", Cancion.class);
 		
 		consulta.setParameter(1, id);
 		
