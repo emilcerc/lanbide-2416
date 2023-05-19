@@ -17,7 +17,9 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @NoArgsConstructor
@@ -46,10 +48,14 @@ public class Usuario {
 	@Size(max = 50)
 	private String nombre;
 	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
 	@NotNull
 	@ManyToOne
 	private Rol rol;
 	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
 	@OneToMany(mappedBy = "usuario")
 	private Set<Cancion> canciones;
 }

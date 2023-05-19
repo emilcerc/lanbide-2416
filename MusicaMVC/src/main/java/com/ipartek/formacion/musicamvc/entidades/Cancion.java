@@ -1,5 +1,8 @@
 package com.ipartek.formacion.musicamvc.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -42,6 +45,7 @@ public class Cancion {
 	
 	@NotNull
 	@Builder.Default
+	@Column(columnDefinition = "TINYINT")
 	private Boolean borrado = false;
 	
 	@NotNull
@@ -50,5 +54,6 @@ public class Cancion {
 	
 	@NotNull
 	@ManyToOne
+	@JsonIgnore
 	private Usuario usuario;
 }

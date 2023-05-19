@@ -2,6 +2,8 @@ package com.ipartek.formacion.musicamvc.entidades;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,7 +17,9 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @NoArgsConstructor
@@ -36,6 +40,9 @@ public class Rol {
 	@Lob
 	private String descripcion;
 	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@JsonIgnore
 	@OneToMany(mappedBy = "rol")
 	private Set<Usuario> usuarios;
 }
