@@ -1,13 +1,17 @@
 package com.ipartek.formacion.musicamvc.logicanegocio;
 
 import com.ipartek.formacion.musicamvc.accesodatos.CancionDao;
+import com.ipartek.formacion.musicamvc.accesodatos.EstiloDao;
 import com.ipartek.formacion.musicamvc.accesodatos.jpa.JpaCancionDao;
+import com.ipartek.formacion.musicamvc.accesodatos.jpa.JpaEstiloDao;
 import com.ipartek.formacion.musicamvc.entidades.Cancion;
+import com.ipartek.formacion.musicamvc.entidades.Estilo;
 import com.ipartek.formacion.musicamvc.entidades.Usuario;
 
 public class UsuarioNegocioImpl implements UsuarioNegocio {
 
 	private CancionDao cancionDao = new JpaCancionDao();
+	private EstiloDao estiloDao = new JpaEstiloDao();
 	
 	private Long id;
 	
@@ -73,6 +77,11 @@ public class UsuarioNegocioImpl implements UsuarioNegocio {
 	@Override
 	public Iterable<Cancion> buscarPorGrupo(String grupo) {
 		return cancionDao.buscarPorGrupoYUsuarioId(grupo, id);
+	}
+
+	@Override
+	public Iterable<Estilo> obtenerEstilos() {
+		return estiloDao.obtenerTodos();
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.ipartek.formacion.musicamvc.logicanegocio;
 
 import com.ipartek.formacion.musicamvc.entidades.Cancion;
+import com.ipartek.formacion.musicamvc.entidades.Estilo;
 
 public interface UsuarioNegocio {
 	Iterable<Cancion> obtenerCancionesUsuario();
@@ -13,4 +14,5 @@ public interface UsuarioNegocio {
 	Iterable<Cancion> buscarPorNombre(String nombre);
 	Iterable<Cancion> buscarPorEstilo(String estilo);
 	Iterable<Cancion> buscarPorGrupo(String grupo);
+	Iterable<Estilo> obtenerEstilos();
 }
