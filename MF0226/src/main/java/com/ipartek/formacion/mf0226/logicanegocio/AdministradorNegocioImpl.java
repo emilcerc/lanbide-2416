@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.Set;
 
 import com.ipartek.formacion.mf0226.accesodatos.ProductoDao;
-import com.ipartek.formacion.mf0226.accesodatos.jpa.JpaProductoDao;
 import com.ipartek.formacion.mf0226.entidades.Producto;
 
 import jakarta.validation.ConstraintViolation;
@@ -17,7 +16,7 @@ import lombok.extern.java.Log;
 @Log
 public class AdministradorNegocioImpl extends UsuarioNegocioImpl implements AdministradorNegocio {
 
-	private ProductoDao dao = new JpaProductoDao();
+	private ProductoDao dao = Globales.FABRICA_DAO.obtenerProductoDao();
 
 	private ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 	private Validator validator = factory.getValidator();

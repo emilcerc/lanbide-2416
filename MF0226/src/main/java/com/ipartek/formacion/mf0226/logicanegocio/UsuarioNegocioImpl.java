@@ -5,8 +5,6 @@ import java.util.logging.Logger;
 
 import com.ipartek.formacion.mf0226.accesodatos.ProductoDao;
 import com.ipartek.formacion.mf0226.accesodatos.UsuarioDao;
-import com.ipartek.formacion.mf0226.accesodatos.jpa.JpaProductoDao;
-import com.ipartek.formacion.mf0226.accesodatos.jpa.JpaUsuarioDao;
 import com.ipartek.formacion.mf0226.entidades.Producto;
 import com.ipartek.formacion.mf0226.entidades.Usuario;
 
@@ -14,8 +12,8 @@ public class UsuarioNegocioImpl implements UsuarioNegocio {
 
 	private static final Logger log = Logger.getLogger(UsuarioNegocioImpl.class.getName());
 	
-	private ProductoDao dao = new JpaProductoDao();
-	private UsuarioDao daoUsuario = new JpaUsuarioDao();
+	private ProductoDao dao = Globales.FABRICA_DAO.obtenerProductoDao();
+	private UsuarioDao daoUsuario = Globales.FABRICA_DAO.obtenerUsuarioDao();
 	
 	@Override
 	public Iterable<Producto> listado() {
