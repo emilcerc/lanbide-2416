@@ -1,6 +1,7 @@
 package com.ipartek.formacion.springmvc.presentacion.controladores;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,9 +20,11 @@ public class ProductoController {
 	}
 	
 	@PostMapping
-	public String recepcionFormulario(@Valid Producto producto, BindingResult bindingResult) {
+	public String recepcionFormulario(@Valid Producto producto, BindingResult bindingResult, Model modelo) {
 		System.out.println(bindingResult);
 		System.out.println(producto);
+		
+		modelo.addAttribute("errores", bindingResult);
 		
 		if(bindingResult.hasErrors()) {
 			return "producto";
