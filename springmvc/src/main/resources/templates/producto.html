@@ -17,45 +17,46 @@
 </head>
 <body class="container">
 
-	<form th:action="@{/producto}" th:object="${producto}" method="post">
-		<input type="number" th:field="*{id}" placeholder="id"> <span
-			th:if="${#fields.hasErrors('id')}">El id debe ser mayor o
-			igual que cero</span> <input th:field="*{nombre}" placeholder="Nombre">
-		<span th:if="${#fields.hasErrors('nombre')}">El nombre debe
-			tener como máximo 50 caracteres y es obligatorio</span> <input type="number"
-			step=".01" th:field="*{precio}" placeholder="Precio"> <span
-			th:if="${#fields.hasErrors('precio')}">Debe rellenarse el
-			precio y ser mayor o igual que 0</span> <input type="date"
-			th:field="*{caducidad}" placeholder="Caducidad"> <span
-			th:if="${#fields.hasErrors('caducidad')}">Debe ser una fecha
-			válida y futura</span>
-
-		<button>Guardar</button>
-	</form>
-
-	<form class="mt-3" th:action="@{/producto}" th:object="${producto}" method="post">
+	<form class="mt-3" th:action="@{/producto}" th:object="${producto}"
+		method="post">
 		<div class="row mb-3">
 			<label for="id" class="col-sm-2 col-form-label">Id</label>
 			<div class="col-sm-10">
-				<input type="number" class="form-control" th:field="*{id}" placeholder="Id">
+				<input type="number" class="form-control"
+					th:classappend="${#fields.hasErrors('id')} ? is-invalid : ''"
+					th:field="*{id}" placeholder="Id">
+				<div class="invalid-feedback">El id debe ser mayor o igual que
+					cero</div>
 			</div>
 		</div>
 		<div class="row mb-3">
 			<label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" th:field="*{nombre}">
+				<input type="text" class="form-control"
+					th:classappend="${#fields.hasErrors('nombre')} ? is-invalid : ''"
+					th:field="*{nombre}">
+				<div class="invalid-feedback">El nombre debe tener como máximo
+					50 caracteres y es obligatorio</div>
 			</div>
 		</div>
 		<div class="row mb-3">
 			<label for="precio" class="col-sm-2 col-form-label">Precio</label>
 			<div class="col-sm-10">
-				<input type="number" step=".01" class="form-control" th:field="*{precio}">
+				<input type="number" step=".01" class="form-control"
+					th:classappend="${#fields.hasErrors('precio')} ? is-invalid : ''"
+					th:field="*{precio}">
+				<div class="invalid-feedback">Debe rellenarse el precio y ser
+					mayor o igual que 0</div>
 			</div>
 		</div>
 		<div class="row mb-3">
 			<label for="caducidad" class="col-sm-2 col-form-label">Caducidad</label>
 			<div class="col-sm-10">
-				<input type="date" class="form-control" th:field="*{caducidad}">
+				<input type="date" class="form-control"
+					th:classappend="${#fields.hasErrors('caducidad')} ? is-invalid : ''"
+					th:field="*{caducidad}">
+				<div class="invalid-feedback">Debe ser una fecha válida y
+					futura</div>
 			</div>
 		</div>
 		<div class="row mb-3">
@@ -63,7 +64,7 @@
 				<button type="submit" class="btn btn-primary">Guardar</button>
 			</div>
 		</div>
-		
+
 	</form>
 
 </body>
