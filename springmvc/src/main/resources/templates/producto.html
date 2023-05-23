@@ -6,11 +6,18 @@
 </head>
 <body>
 
-	<form action="producto" method="post">
-		<input name="id" placeholder="id">
-		<input name="nombre" placeholder="Nombre">
-		<input name="precio" placeholder="Precio">
-		<input name="caducidad" placeholder="Caducidad">
+	<form th:action="@{/producto}" th:object="${producto}" method="post">
+		<input type="number" th:field="*{id}" placeholder="id">
+		<span th:if="${#fields.hasErrors('id')}">El id debe ser mayor o igual que cero</span>
+		
+		<input th:field="*{nombre}" placeholder="Nombre">
+		<span th:if="${#fields.hasErrors('nombre')}">El nombre debe tener como máximo 50 caracteres y es obligatorio</span>
+		
+		<input type="number" step=".01" th:field="*{precio}" placeholder="Precio">
+		<span th:if="${#fields.hasErrors('precio')}">Debe rellenarse el precio y ser mayor o igual que 0</span>
+		
+		<input type="date" th:field="*{caducidad}" placeholder="Caducidad">
+		<span th:if="${#fields.hasErrors('caducidad')}">Debe ser una fecha válida y futura</span>
 		
 		<button>Guardar</button>
 	</form>
