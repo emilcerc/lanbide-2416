@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!-- JSP -->
 <!DOCTYPE html>
 <html>
@@ -15,44 +16,40 @@
 </head>
 <body class="container">
 
-	<form class="mt-3" action="producto"
-		method="post">
+	<form:form class="mt-3" action="producto" method="post"
+		modelAttribute="producto">
 		<div class="row mb-3">
-			<label for="id" class="col-sm-2 col-form-label">Id</label>
+			<form:label path="id" class="col-sm-2 col-form-label">Id</form:label>
 			<div class="col-sm-10">
-				<input type="number"
-					class="form-control ${errores.hasFieldErrors('id') ? 'is-invalid' : '' }"
-					id="id" name="id" value="${producto.id}" placeholder="Id">
+				<form:input type="number" cssClass="form-control"
+					cssErrorClass="form-control is-invalid" path="id" placeholder="Id" />
 				<div class="invalid-feedback">El id debe ser mayor o igual que
 					cero</div>
 			</div>
 		</div>
 		<div class="row mb-3">
-			<label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+			<form:label path="nombre" class="col-sm-2 col-form-label">Nombre</form:label>
 			<div class="col-sm-10">
-				<input type="text"
-					class="form-control ${errores.hasFieldErrors('nombre') ? 'is-invalid' : '' }"
-					id="nombre" name="nombre" value="${producto.nombre}">
+				<form:input type="text" cssClass="form-control"
+					cssErrorClass="form-control is-invalid" path="nombre" />
 				<div class="invalid-feedback">El nombre debe tener como máximo
 					50 caracteres y es obligatorio</div>
 			</div>
 		</div>
 		<div class="row mb-3">
-			<label for="precio" class="col-sm-2 col-form-label">Precio</label>
+			<form:label path="precio" class="col-sm-2 col-form-label">Precio</form:label>
 			<div class="col-sm-10">
-				<input type="number" step=".01"
-					class="form-control ${errores.hasFieldErrors('precio') ? 'is-invalid' : '' }"
-					id="precio" name="precio" value="${producto.precio}">
+				<form:input type="number" step=".01" cssClass="form-control"
+					cssErrorClass="form-control is-invalid" path="precio" />
 				<div class="invalid-feedback">Debe rellenarse el precio y ser
 					mayor o igual que 0</div>
 			</div>
 		</div>
 		<div class="row mb-3">
-			<label for="caducidad" class="col-sm-2 col-form-label">Caducidad</label>
+			<form:label path="caducidad" class="col-sm-2 col-form-label">Caducidad</form:label>
 			<div class="col-sm-10">
-				<input type="date"
-					class="form-control ${errores.hasFieldErrors('caducidad') ? 'is-invalid' : '' }"
-					id="caducidad" name="caducidad" value="${producto.caducidad}">
+				<form:input type="date" cssClass="form-control"
+					cssErrorClass="form-control is-invalid" path="caducidad" />
 				<div class="invalid-feedback">Debe ser una fecha válida y
 					futura</div>
 			</div>
@@ -63,7 +60,7 @@
 			</div>
 		</div>
 
-	</form>
+	</form:form>
 
 </body>
 </html>
