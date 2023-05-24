@@ -16,7 +16,7 @@
 </head>
 <body class="container">
 
-	<form:form class="mt-3" action="producto" method="post"
+	<form:form class="mt-3" action="admin/producto" method="post"
 		modelAttribute="producto">
 		<div class="row mb-3">
 			<form:label path="id" class="col-sm-2 col-form-label">Id</form:label>
