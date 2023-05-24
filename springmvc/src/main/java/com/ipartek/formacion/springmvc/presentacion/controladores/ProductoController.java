@@ -11,7 +11,7 @@ import com.ipartek.formacion.springmvc.presentacion.modelos.Producto;
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("/producto")
+@RequestMapping("/admin/producto")
 public class ProductoController {
 	@GetMapping
 	public String mostrarFormulario(Producto producto) {
