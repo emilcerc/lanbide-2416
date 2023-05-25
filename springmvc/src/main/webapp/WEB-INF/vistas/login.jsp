@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="jakarta.tags.core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!-- JSP -->
 <!DOCTYPE html>
 <html>
@@ -16,6 +17,9 @@
 <script src="js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="container">
+	<sec:authorize access="isAuthenticated()">
+		<sec:authentication property="principal.username"/>
+	</sec:authorize>
 
 	<c:if test="${param.error != null}">
 		<div>El usuario o contraseña no son correctos</div>
