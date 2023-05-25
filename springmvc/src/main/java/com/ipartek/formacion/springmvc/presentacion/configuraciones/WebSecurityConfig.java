@@ -26,7 +26,16 @@ public class WebSecurityConfig {
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth)
 	  throws Exception {
-	    auth.jdbcAuthentication().dataSource(dataSource);
+	    auth.jdbcAuthentication().dataSource(dataSource)
+	    .usersByUsernameQuery("SELECT usuario, pass, 1 FROM usuarios WHERE usuario = ?")
+	    .authoritiesByUsernameQuery("""
+	    		SELECT usuario, CONCAT('ROLE_',nombre)
+	    		FROM usuarios u
+	    		JOIN usuarios_roles ur ON u.id = ur.usuarios_id
+	    		JOIN roles r ON ur.roles_id = r.id
+	    		WHERE usuario = ?
+	    		"""
+	    );
 	}
 	
 	@Bean
