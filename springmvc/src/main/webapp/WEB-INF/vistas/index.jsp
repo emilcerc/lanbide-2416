@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,9 @@
 </head>
 <body>
 
-	<form action="saludar" method="post">
+	<h1>Bienvenido <sec:authentication property="principal.username" /> </h1>
+
+	<form action="${pageContext.request.contextPath}/usuarios/saludar" method="post">
 		<input name="nombre" placeholder="Nombre">
 		<button>Saludar</button>
 	</form>

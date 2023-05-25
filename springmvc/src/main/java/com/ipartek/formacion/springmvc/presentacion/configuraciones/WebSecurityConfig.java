@@ -19,10 +19,11 @@ public class WebSecurityConfig {
 		http.csrf((csrf) -> csrf.disable())
 			.authorizeHttpRequests((requests) -> requests
 				.requestMatchers("/admin/**").hasRole("ADMIN")
-				.anyRequest().authenticated()
+				.requestMatchers("/usuarios/**").hasRole("USER")
+				.anyRequest().permitAll()
 			)
 			.formLogin((form) -> form
-				//.loginPage("/login")
+				.loginPage("/login")
 				.permitAll()
 			)
 			.logout((logout) -> logout.permitAll());
@@ -42,7 +43,7 @@ public class WebSecurityConfig {
 			User.withDefaultPasswordEncoder()
 				.username("javier")
 				.password("lete")
-				.roles("ADMIN")
+				.roles("ADMIN", "USER")
 				.build();
 
 		return new InMemoryUserDetailsManager(user, admin);
