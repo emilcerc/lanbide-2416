@@ -3,8 +3,8 @@ package com.ipartek.formacion.springmvc.servicios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ipartek.formacion.springmvc.presentacion.modelos.Producto;
-import com.ipartek.formacion.springmvc.repositorios.ProductoRepository;
+import com.ipartek.formacion.springmvc.entidades.Producto;
+import com.ipartek.formacion.springmvc.repositorios.springdatajpa.ProductoRepository;
 
 import lombok.extern.java.Log;
 
@@ -17,31 +17,31 @@ public class ProductoServiceImpl implements ProductoService {
 	@Override
 	public Iterable<Producto> listado() {
 		log.info("LISTADO");
-		return repo.obtenerTodos();
+		return repo.findAll();
 	}
 
 	@Override
 	public Producto detalle(Long id) {
 		log.info("DETALLE");
-		return repo.obtenerPorId(id);
+		return repo.findById(id).orElse(null);
 	}
 
 	@Override
 	public Producto guardar(Producto producto) {
 		log.info("GUARDAR");
-		return repo.insertar(producto);
+		return repo.save(producto);
 	}
 
 	@Override
 	public Producto modificar(Producto producto) {
 		log.info("MODIFICAR");
-		return repo.modificar(producto);
+		return repo.save(producto);
 	}
 
 	@Override
 	public void borrar(Long id) {
 		log.info("BORRAR");
-		repo.borrar(id);
+		repo.deleteById(id);
 	}
 
 }

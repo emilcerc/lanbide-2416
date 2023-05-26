@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ipartek.formacion.springmvc.presentacion.modelos.Producto;
+import com.ipartek.formacion.springmvc.entidades.Producto;
 import com.ipartek.formacion.springmvc.servicios.ProductoService;
 
 import jakarta.validation.Valid;

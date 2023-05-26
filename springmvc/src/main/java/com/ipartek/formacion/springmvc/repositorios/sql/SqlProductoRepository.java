@@ -5,7 +5,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.ipartek.formacion.springmvc.presentacion.modelos.Producto;
+import com.ipartek.formacion.springmvc.entidades.Producto;
 import com.ipartek.formacion.springmvc.repositorios.ProductoRepository;
 
 @Repository
