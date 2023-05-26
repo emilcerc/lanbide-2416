@@ -30,7 +30,6 @@ import lombok.NoArgsConstructor;
 public class Producto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Min(0)
 	private Long id;
 	
 	@NotNull
