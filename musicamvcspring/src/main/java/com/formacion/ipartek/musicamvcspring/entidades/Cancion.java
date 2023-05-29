@@ -49,4 +49,9 @@ public class Cancion {
 	@NotNull
 	@ManyToOne
 	private Estilo estilo;
+	
+	// JPA
+	@NotNull
+	@ManyToOne
+	private Usuario usuario;
 }
