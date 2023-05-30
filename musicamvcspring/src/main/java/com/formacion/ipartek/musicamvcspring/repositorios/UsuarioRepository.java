@@ -11,7 +11,7 @@ import com.formacion.ipartek.musicamvcspring.entidades.Usuario;
 public interface UsuarioRepository extends CrudRepository<Usuario, Long> {
 	Usuario findByEmail(String email);
 	
-	@Query("from Cancion c join c.usuario u where u.id = ?1")
+	@Query("from Cancion c join fetch c.grupo join fetch c.estilo join fetch c.usuario u where u.id = ?1")
 	Iterable<Cancion> buscarPorId(Long id);
 	
 	@Query("from Cancion c join c.usuario u where u.id = ?1 and c.titulo like %?2%")
