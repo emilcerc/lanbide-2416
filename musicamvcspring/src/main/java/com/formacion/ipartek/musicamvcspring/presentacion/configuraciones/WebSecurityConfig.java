@@ -47,7 +47,8 @@ public class WebSecurityConfig {
 				.anyRequest().permitAll()
 			)
 			.formLogin((form) -> form
-				//.loginPage("/login")
+				.loginPage("/login")
+				.defaultSuccessUrl("/procesar-usuario")
 				.permitAll()
 			)
 			.logout((logout) -> logout.permitAll());
