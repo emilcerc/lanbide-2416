@@ -1,6 +1,7 @@
 package com.formacion.ipartek.musicamvcspring.servicios;
 
 import com.formacion.ipartek.musicamvcspring.entidades.Cancion;
+import com.formacion.ipartek.musicamvcspring.entidades.Usuario;
 
 public interface UsuarioService {
 	Cancion agregarCancion(Cancion cancion);
@@ -13,4 +14,6 @@ public interface UsuarioService {
 	Iterable<Cancion> buscarCancionesPorNombre(String nombre);
 	Iterable<Cancion> buscarCancionesPorEstilo(String estilo);
 	Iterable<Cancion> buscarCancionesPorGrupo(String grupo);
+	void setUsuario(Usuario usuario);
+	Usuario getUsuario();
 }
