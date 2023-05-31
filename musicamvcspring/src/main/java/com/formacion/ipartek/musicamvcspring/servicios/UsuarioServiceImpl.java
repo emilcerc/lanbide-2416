@@ -4,10 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.formacion.ipartek.musicamvcspring.entidades.Cancion;
+import com.formacion.ipartek.musicamvcspring.entidades.Estilo;
+import com.formacion.ipartek.musicamvcspring.entidades.Grupo;
 import com.formacion.ipartek.musicamvcspring.entidades.Usuario;
 import com.formacion.ipartek.musicamvcspring.repositorios.CancionRepository;
+import com.formacion.ipartek.musicamvcspring.repositorios.EstiloRepository;
+import com.formacion.ipartek.musicamvcspring.repositorios.GrupoRepository;
 import com.formacion.ipartek.musicamvcspring.repositorios.UsuarioRepository;
 
+import lombok.ToString;
+
+@ToString
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
 	@Autowired
@@ -15,6 +22,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 	
 	@Autowired
 	private UsuarioRepository repoUsuario;
+	
+	@Autowired
+	private EstiloRepository repoEstilo;
+	
+	@Autowired
+	private GrupoRepository repoGrupo;
 
 	private Usuario usuario;
 
@@ -37,9 +50,11 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public Cancion modificarCancion(Cancion cancion) {
-		if(cancion.getUsuario().getId() != usuario.getId()) {
-			throw new ServiciosException("No se puede modificar una canción que no es del usuario");
+		if(obtenerPorId(cancion.getId())== null) {
+			throw new ServiciosException("No se ha encontrado la canción a modificar");
 		}
+		
+		cancion.setUsuario(usuario);
 
 		repoCancion.save(cancion);
 
@@ -87,6 +102,16 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public Iterable<Cancion> buscarCancionesPorGrupo(String grupo) {
 		return repoUsuario.buscarPorGrupo(usuario.getId(), grupo);
+	}
+
+	@Override
+	public Iterable<Estilo> obtenerEstilos() {
+		return repoEstilo.findAll();
+	}
+
+	@Override
+	public Iterable<Grupo> obtenerGrupos() {
+		return repoGrupo.findAll();
 	}
 
 	

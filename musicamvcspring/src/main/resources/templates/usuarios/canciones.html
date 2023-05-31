@@ -26,8 +26,8 @@
 						<td th:text="*{grupo.nombre}">El grupo</td>
 						<td th:text="*{estilo.nombre}">El estilo</td>
 						<td th:text="*{url}">La URL</td>
-						<td><a class="btn btn-primary" href="#">Editar</a> <a
-							class="btn btn-danger" href="#">Borrar</a></td>
+						<td><a class="btn btn-primary" href="#" th:href="@{/usuarios/cancion/{id}(id=*{id})}">Editar</a> <a
+							class="btn btn-danger" href="#" th:href="@{/usuarios/cancion/borrar/{id}(id=*{id})}">Borrar</a></td>
 					</tr>
 				</tbody>
 				<tfoot class="table-dark">
@@ -37,7 +37,7 @@
 						<td></td>
 						<td></td>
 						<td></td>
-						<td><a class="btn btn-primary" href="#">Añadir</a></td>
+						<td><a class="btn btn-primary" href="#" th:href="@{/usuarios/cancion}">Añadir</a></td>
 					</tr>
 				</tfoot>
 			</table>
