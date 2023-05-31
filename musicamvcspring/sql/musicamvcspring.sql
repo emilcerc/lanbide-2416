@@ -18,6 +18,90 @@ USE `musicamvcspring`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `canciones`
+--
+
+DROP TABLE IF EXISTS `canciones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `canciones` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(50) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `grupo_id` bigint NOT NULL,
+  `estilo_id` bigint NOT NULL,
+  `usuario_id` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKtjwi062m51u6y6rc5ua04p0o8` (`grupo_id`),
+  KEY `FKg1g1wyabpy4j3wgbtd32ikc5t` (`estilo_id`),
+  KEY `FKd3o9e1yws7gho1dce0hkajcp9` (`usuario_id`),
+  CONSTRAINT `FKd3o9e1yws7gho1dce0hkajcp9` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
+  CONSTRAINT `FKg1g1wyabpy4j3wgbtd32ikc5t` FOREIGN KEY (`estilo_id`) REFERENCES `estilos` (`id`),
+  CONSTRAINT `FKtjwi062m51u6y6rc5ua04p0o8` FOREIGN KEY (`grupo_id`) REFERENCES `grupos` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `canciones`
+--
+
+LOCK TABLES `canciones` WRITE;
+/*!40000 ALTER TABLE `canciones` DISABLE KEYS */;
+INSERT INTO `canciones` VALUES (1,'Owner of a lonely heart','a',1,1,1),(2,'Tarkus','a',2,1,2),(3,'Supersexy girl','a',4,2,1),(4,'Funky macarrón','http://lakjsdflkajsdf',4,3,2),(5,'Jump','http://asdfx',3,1,2);
+/*!40000 ALTER TABLE `canciones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `estilos`
+--
+
+DROP TABLE IF EXISTS `estilos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `estilos` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `descripcion` tinytext,
+  `nombre` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `estilos`
+--
+
+LOCK TABLES `estilos` WRITE;
+/*!40000 ALTER TABLE `estilos` DISABLE KEYS */;
+INSERT INTO `estilos` VALUES (1,NULL,'Rock'),(2,NULL,'Funk'),(3,NULL,'Disco');
+/*!40000 ALTER TABLE `estilos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `grupos`
+--
+
+DROP TABLE IF EXISTS `grupos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `grupos` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) NOT NULL,
+  `comentarios` tinytext,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `grupos`
+--
+
+LOCK TABLES `grupos` WRITE;
+/*!40000 ALTER TABLE `grupos` DISABLE KEYS */;
+INSERT INTO `grupos` VALUES (1,'Yes',NULL),(2,'Emerson, Lake & Palmer',NULL),(3,'Van Halen',NULL),(4,'Fundación Tony Manero',NULL);
+/*!40000 ALTER TABLE `grupos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `roles`
 --
 
@@ -113,4 +197,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-29  9:30:10
+-- Dump completed on 2023-05-31 11:49:21
