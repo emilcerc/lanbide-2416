@@ -15,11 +15,11 @@ import com.formacion.ipartek.musicamvcspring.servicios.UsuarioService;
 public class IndexController {
 	@Autowired
 	private AnonimoService anonimoService;
-	
+
 	@Autowired
 	private UsuarioService usuarioService;
-	
-	@GetMapping("login")
+
+	@GetMapping({ "", "login" })
 	public String login() {
 		return "login";
 	}
@@ -37,8 +37,8 @@ public class IndexController {
 
 		Usuario usuario = anonimoService.obtenerPorEmail(auth.getName());
 		usuarioService.setUsuario(usuario);
-		
-		if(esAdmin) {
+
+		if (esAdmin) {
 			return "redirect:/admin";
 		} else {
 			return "redirect:/usuarios";
