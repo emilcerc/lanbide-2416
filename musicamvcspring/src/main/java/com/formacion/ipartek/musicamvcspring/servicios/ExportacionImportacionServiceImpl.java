@@ -1,8 +1,10 @@
 package com.formacion.ipartek.musicamvcspring.servicios;
 
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Scanner;
 import java.util.logging.Level;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,20 +28,38 @@ public class ExportacionImportacionServiceImpl implements ExportacionImportacion
 			pw.println("id;email;password;nombre");
 			
 			jdbc.query("SELECT * FROM usuarios", (rs, rowNum) -> {
-				pw.printf("%s;\"%s\";\"%s\";\"%s\"\n", rs.getLong("id"),
+				pw.printf("%s;%s;%s;%s\n", rs.getLong("id"),
 						rs.getString("email"), rs.getString("password"), rs.getString("nombre"));
 				return null;
 			});
 		} catch (DataAccessException | IOException e) {
-			log.log(Level.WARNING, "Fallo al exportar el fichero", e);
-			throw new ServiciosException("No se ha podido exportar el fichero", e);
+			ServiciosException ex = new ServiciosException("No se ha podido exportar el fichero", e);
+			log.log(Level.WARNING, "Fallo al exportar el fichero", ex);
+			throw ex;
 		}
 	}
 
 	@Override
 	public void importarUsuariosDeCsv(String rutaFichero) {
-		// TODO Auto-generated method stub
-		
+		try (FileReader fr = new FileReader(rutaFichero);
+				Scanner sc = new Scanner(fr)) {
+			String linea;
+			String[] datos;
+			
+			sc.nextLine();
+			
+			while(sc.hasNext()) {
+				linea = sc.nextLine();
+				datos = linea.split(";");
+				
+				jdbc.update("INSERT INTO usuarios (email, password, nombre) VALUES (?,?,?)",
+						datos[1], datos[2], datos[3]);
+			}
+		} catch (DataAccessException | IOException e) {
+			ServiciosException ex = new ServiciosException("No se ha podido importar el fichero", e);
+			log.log(Level.WARNING, "Fallo al importar el fichero", ex);
+			throw ex;
+		}
 	}
 
 }

@@ -24,7 +24,23 @@ public class ExportarImportarController {
 		try {
 			servicio.exportarUsuariosEnCsv(rutaFichero);
 		} catch (ServiciosException e) {
-			modelo.addAttribute("error", e.getMessage());
+			modelo.addAttribute("errorExportar", e.getMessage());
+		}
+		
+		return "admin/exportacion-importacion";
+	}
+	
+	@GetMapping("/admin/importar")
+	public String importar() {
+		return "admin/exportacion-importacion";
+	}
+	
+	@PostMapping("/admin/importar")
+	public String importarPost(String rutaFichero, Model modelo) {
+		try {
+			servicio.importarUsuariosDeCsv(rutaFichero);
+		} catch (ServiciosException e) {
+			modelo.addAttribute("errorImportar", e.getMessage());
 		}
 		
 		return "admin/exportacion-importacion";

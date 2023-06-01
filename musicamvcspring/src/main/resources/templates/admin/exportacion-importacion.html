@@ -11,7 +11,13 @@
 		<form action="#" th:action="@{/admin/exportar}" method="post">
 			<input name="rutaFichero">
 			<button>Exportar</button>
-			<span th:text="${error}">Error</span>
+			<span th:text="${errorExportar}">Error</span>
+		</form>
+		
+		<form action="#" th:action="@{/admin/importar}" method="post">
+			<input name="rutaFichero">
+			<button>Importar</button>
+			<span th:text="${errorImportar}">Error</span>
 		</form>
 	</main>
 </body>
