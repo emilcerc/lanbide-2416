@@ -1,13 +1,13 @@
 package com.formacion.ipartek.musicamvcspring.repositorios;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.formacion.ipartek.musicamvcspring.entidades.Cancion;
 
 @RepositoryRestResource(path = "canciones", collectionResourceRel = "canciones")
-public interface CancionRepository extends CrudRepository<Cancion, Long> {
+public interface CancionRepository extends JpaRepository<Cancion, Long> {
 	Iterable<Cancion> findByTituloContains(String titulo);
 	
 	@Query("from Cancion c join fetch c.grupo g where g.nombre like %?1%")
