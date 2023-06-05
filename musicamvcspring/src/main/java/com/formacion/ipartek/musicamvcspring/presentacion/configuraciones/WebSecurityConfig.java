@@ -12,17 +12,31 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+/**
+ * Configuración de seguridad de la aplicación
+ * @author javierlete
+ * @version 1.0
+ */
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
 	@Autowired
 	private DataSource dataSource;
 	
+	/**
+	 * Codificación de las password
+	 * @return BCrypt
+	 */
 	@Bean
 	PasswordEncoder passwordEncoder() {
 	    return new BCryptPasswordEncoder();
 	}
 	
+	/**
+	 * Autorizaciones basadas en los usuarios de nuestra base de datos
+	 * @param auth
+	 * @throws Exception
+	 */
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth)
 	  throws Exception {
@@ -38,6 +52,16 @@ public class WebSecurityConfig {
 	    );
 	}
 	
+	/**
+	 * <p>Configuración de las autorizaciones de la aplicación</p>
+	 * <ul>
+	 * <li>Sólo los <code>USER</code> pueden acceder a <code>/usuarios</code></li>
+	 * <li>Sólo los <code>ADMIN</code> pueden acceder a <code>/admin</code></li>
+	 * <li>Todos los usuarios pueden acceder al resto la web</li>
+	 * </ul>
+	 * @param auth
+	 * @throws Exception
+	 */
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.csrf((csrf) -> csrf.disable())
