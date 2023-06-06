@@ -27,7 +27,7 @@ public class AdminController {
 
 		Sort.Order order = pageRequest.getSort().get().findFirst().orElse(null);
 		
-		String ordenacion = "id, ASC";
+		String ordenacion = "id,ASC";
 		
 		if(order != null) {
 			ordenacion = order.getProperty() + "," + (order.isAscending() ? "ASC" : "DESC");
