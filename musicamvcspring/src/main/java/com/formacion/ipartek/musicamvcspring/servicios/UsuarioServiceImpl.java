@@ -81,7 +81,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public Cancion obtenerPorId(Long id) {
 		Cancion cancion = repoCancion.findById(id).orElse(null);
 		
-		if(cancion.getUsuario().getId() != usuario.getId()) {
+		if(!usuario.getRoles().stream().anyMatch(rol -> rol.getNombre().equals("ADMIN")) &&
+				cancion.getUsuario().getId() != usuario.getId()) {
 			return null;
 		}
 		

@@ -19,7 +19,8 @@ public interface UsuarioRepository extends CrudRepository<Usuario, Long> {
 	 * @param email email a buscar
 	 * @return usuario encontrado o <code>null</code> si no se encuentra
 	 */
-	Usuario findByEmail(String email);
+	@Query("from Usuario u join fetch u.roles where u.email = ?1")
+	Usuario buscarPorEmail(String email);
 	
 	/**
 	 * Buscar canción por <strong>id de usuario</strong>

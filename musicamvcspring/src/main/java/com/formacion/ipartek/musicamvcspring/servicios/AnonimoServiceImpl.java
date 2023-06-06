@@ -13,7 +13,7 @@ public class AnonimoServiceImpl implements AnonimoService {
 	
 	@Override
 	public Usuario obtenerPorEmail(String email) {
-		return repo.findByEmail(email);
+		return repo.buscarPorEmail(email);
 	}
 
 }
