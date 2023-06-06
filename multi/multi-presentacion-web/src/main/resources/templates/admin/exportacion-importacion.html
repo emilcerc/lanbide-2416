@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html th:replace="~{_plantilla :: global(~{::title}, ~{::main})}"
+	xmlns:th="https://www.thymeleaf.org">
+<head>
+<title>Administración</title>
+</head>
+<body>
+	<main>
+		<h1>Exportación - Importación</h1>
+		
+		<form action="#" th:action="@{/admin/exportar}" method="post">
+			<input name="rutaFichero">
+			<button>Exportar</button>
+			<span th:text="${errorExportar}">Error</span>
+		</form>
+		
+		<form action="#" th:action="@{/admin/importar}" method="post">
+			<input name="rutaFichero">
+			<button>Importar</button>
+			<span th:text="${errorImportar}">Error</span>
+		</form>
+	</main>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html th:replace="~{_plantilla :: global(~{::title}, ~{::main})}"
+	xmlns:th="https://www.thymeleaf.org">
+<head>
+<title>Usuarios</title>
+</head>
+<body>
+	<main>
+		<h1>Usuarios</h1>
+		<div class="table-responsive">
+			<table class="datatable-decorada table table-hover table-striped table-bordered">
+				<thead class="table-dark">
+					<tr>
+						<th>Id</th>
+						<th>Título</th>
+						<th>Grupo</th>
+						<th>Estilo</th>
+						<th>URL</th>
+						<th>Opciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="cancion: ${canciones}" th:object="${cancion}">
+						<th th:text="*{id}">1</th>
+						<td th:text="*{titulo}">La canción</td>
+						<td th:text="*{grupo.nombre}">El grupo</td>
+						<td th:text="*{estilo.nombre}">El estilo</td>
+						<td th:text="*{url}">La URL</td>
+						<td><a class="btn btn-primary" href="#" th:href="@{/usuarios/cancion/{id}(id=*{id})}">Editar</a> <a
+							class="btn btn-danger" href="#" th:href="@{/usuarios/cancion/borrar/{id}(id=*{id})}">Borrar</a></td>
+					</tr>
+				</tbody>
+				<tfoot class="table-dark">
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><a class="btn btn-primary" href="#" th:href="@{/usuarios/cancion}">Añadir</a></td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</main>
+</body>
+</html>
