@@ -14,7 +14,7 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Override
 	public Iterable<Cancion> obtenerPagina(Pageable pageable) {
-		return repo.findAll(pageable);
+		return repo.obtenerTodasConEstiloGrupoUsuario(pageable);
 	}
 	
 	@Override

@@ -1,5 +1,7 @@
 package com.formacion.ipartek.musicamvcspring.repositorios;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -13,6 +15,13 @@ import com.formacion.ipartek.musicamvcspring.entidades.Cancion;
  */
 @RepositoryRestResource(path = "canciones", collectionResourceRel = "canciones")
 public interface CancionRepository extends JpaRepository<Cancion, Long> {
+	/**
+	 * Obtener todas las canciones con el estilo, grupo y usuario incorporado
+	 * @return todas las canciones
+	 */
+	@Query("from Cancion c join fetch c.grupo join fetch c.estilo join fetch c.usuario")
+	Page<Cancion> obtenerTodasConEstiloGrupoUsuario(Pageable pageable);
+	
 	/**
 	 * Buscar canciones por parte del título
 	 * @param titulo parte del título de la canción
