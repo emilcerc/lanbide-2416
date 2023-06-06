@@ -33,7 +33,7 @@
 	$(function() {
 		$('.datatable-decorada').DataTable({
 			language : {
-				url: url
+				url : url
 			}
 		});
 	});
@@ -56,10 +56,14 @@
 						th:href="@{/usuarios/canciones}">Canciones</a></li>
 				</ul>
 				<ul class="navbar-nav mb-2 mb-lg-0">
-					<li class="navbar-text" sec:authorize="isAuthenticated()"
-						sec:authentication="name">Usuario</li>
 					<li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')"><a
 						class="nav-link" href="#" th:href="@{/admin}">Administración</a></li>
+					<li class="navbar-text" sec:authorize="isAuthenticated()"
+						sec:authentication="name">Usuario</li>
+					<li class="nav-item" sec:authorize="isAuthenticated()"><a
+						class="nav-link" href="#" th:href="@{/logout}">Logout</a></li>
+					<li class="nav-item" sec:authorize="!isAuthenticated()"><a
+						class="nav-link" href="#" th:href="@{/login}">Login</a></li>
 				</ul>
 			</div>
 		</div>
