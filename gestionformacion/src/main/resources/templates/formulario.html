@@ -6,14 +6,14 @@
 </head>
 <body>
 
-<form>
-	<input placeholder="Identificador">
-	<select>
+<form th:action="@{/formulario}" th:object="${curso}" method="post">
+	<input placeholder="Identificador" th:field="*{identificador}">
+	<select th:field="*{materia.id}">
 		<option th:each="m: ${materias}" th:text="${m.nombre}" th:value="${m.id}">PHP</option>
 	</select>
-	<input type="date" placeholder="Fecha de inicio">
-	<input type="number" placeholder="Horas">
-	<select>
+	<input type="date" placeholder="Fecha de inicio" th:field="*{fechaInicio}">
+	<input type="number" placeholder="Horas" th:field="*{horas}">
+	<select th:field="*{profesor.id}">
 		<option th:each="p: ${profesores}" th:text="${p.nombre}" th:value="${p.id}">Pepe</option>
 	</select>
 	
