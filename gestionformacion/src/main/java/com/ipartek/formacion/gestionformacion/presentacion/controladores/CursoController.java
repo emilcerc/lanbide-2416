@@ -21,7 +21,9 @@ public class CursoController {
 	}
 	
 	@GetMapping("/formulario")
-	public String formulario() {
+	public String formulario(Model modelo) {
+		modelo.addAttribute("materias", servicio.listadoMaterias());
+		modelo.addAttribute("profesores", servicio.listadoProfesores());
 		return "formulario";
 	}
 }

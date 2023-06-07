@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Formulario Curso</title>
@@ -9,14 +9,12 @@
 <form>
 	<input placeholder="Identificador">
 	<select>
-		<option>PHP</option>
-		<option>Angular</option>
+		<option th:each="m: ${materias}" th:text="${m.nombre}" th:value="${m.id}">PHP</option>
 	</select>
 	<input type="date" placeholder="Fecha de inicio">
 	<input type="number" placeholder="Horas">
 	<select>
-		<option>Pepe</option>
-		<option>Juan</option>
+		<option th:each="p: ${profesores}" th:text="${p.nombre}" th:value="${p.id}">Pepe</option>
 	</select>
 	
 	<button>Guardar</button>
