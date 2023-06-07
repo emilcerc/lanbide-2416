@@ -2,6 +2,7 @@ package com.ipartek.formacion.gestionformacion.entidades;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,6 +33,7 @@ public class Curso {
 	@NotBlank
 	@Pattern(regexp = "[A-Z]{4}\\d{4}")
 	@Size(min = 8, max = 8)
+	@Column(unique = true)
 	private String identificador;
 	
 	@NotNull
