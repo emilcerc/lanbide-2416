@@ -23,7 +23,7 @@ public class CursoServiceImpl implements CursoService {
 	
 	@Override
 	public Iterable<Curso> listado() {
-		return repo.findAll();
+		return repo.listadoCompleto();
 	}
 
 	@Override
