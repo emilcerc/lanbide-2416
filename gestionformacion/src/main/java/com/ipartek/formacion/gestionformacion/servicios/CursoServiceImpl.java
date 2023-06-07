@@ -1,6 +1,7 @@
 package com.ipartek.formacion.gestionformacion.servicios;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.ipartek.formacion.gestionformacion.entidades.Curso;
@@ -28,7 +29,11 @@ public class CursoServiceImpl implements CursoService {
 
 	@Override
 	public Curso alta(Curso curso) {
-		repo.save(curso);
+		try {
+			repo.save(curso);
+		} catch (DataIntegrityViolationException e) {
+			throw new ServiciosException("Identificador duplicado", e);
+		}
 		return curso;
 	}
 

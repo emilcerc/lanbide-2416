@@ -8,16 +8,22 @@
 
 <form th:action="@{/formulario}" th:object="${curso}" method="post">
 	<input placeholder="Identificador" th:field="*{identificador}">
+	<div th:if="${#fields.hasErrors('identificador')}" th:errors="*{identificador}"></div>
 	<select th:field="*{materia.id}">
 		<option th:each="m: ${materias}" th:text="${m.nombre}" th:value="${m.id}">PHP</option>
 	</select>
+	<div th:if="${#fields.hasErrors('materia.id')}" th:errors="*{materia.id}"></div>
 	<input type="date" placeholder="Fecha de inicio" th:field="*{fechaInicio}">
+	<div th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}"></div>
 	<input type="number" placeholder="Horas" th:field="*{horas}">
+	<div th:if="${#fields.hasErrors('horas')}" th:errors="*{horas}"></div>
 	<select th:field="*{profesor.id}">
 		<option th:each="p: ${profesores}" th:text="${p.nombre}" th:value="${p.id}">Pepe</option>
 	</select>
+	<div th:if="${#fields.hasErrors('profesor.id')}" th:errors="*{profesor.id}"></div>
 	
 	<button>Guardar</button>
+	<div th:if="${error != null}" th:text="${error}"></div>
 </form>
 
 </body>
