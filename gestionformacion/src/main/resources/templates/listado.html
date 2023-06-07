@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cursos</title>
+</head>
+<body>
+
+<table>
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Identificador</th>
+			<th>Materia</th>
+			<th>Fecha</th>
+			<th>Horas</th>
+			<th>Profesor</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="c: ${cursos}" th:object="${c}">
+			<td th:text="*{id}">1</td>
+			<td th:text="${c.identificador}">ABCD0123</td>
+			<td th:text="*{materia.nombre}">Java</td>
+			<td th:text="*{fechaInicio}">2023-01-02</td>
+			<td th:text="*{horas}">600</td>
+			<td th:text="${c.profesor.nombre}">Javier Lete</td>
+		</tr>
+	</tbody>
+</table>
+
+</body>
+</html>
